@@ -509,14 +509,31 @@ generateCartItems();
   
   
   
-  let updateCartDataForSubmission = () => {
-    let cartDataString = basket.map(x => {
+ let updateCartDataForSubmission = () => {
+    // Fetch cart items
+    let cartItemsString = basket.map(x => {
         let { id, item } = x;
         let search = shopItemsData.find(y => y.id === id) || {};
         return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
     }).join("\n");
-    document.getElementById("cartDataInput").value = cartDataString;
+
+    // Fetch customer details
+    let customerDetailsString = `
+        Ime: ${document.getElementById("displayIme").innerText}
+        Prezime: ${document.getElementById("displayPrezime").innerText}
+        Email: ${document.getElementById("displayEmail").innerText}
+        Grad: ${document.getElementById("displayGrad").innerText}
+        Ulica: ${document.getElementById("displayUlica").innerText}
+        Broj: ${document.getElementById("displayBroj").innerText}
+        Postanskibroj: ${document.getElementById("displayPostanskibroj").innerText}
+    `;
+
+    // Combine cart items and customer details
+    let combinedDataString = `Customer Details:\n${customerDetailsString}\n\nCart Items:\n${cartItemsString}`;
+
+    document.getElementById("cartDataInput").value = combinedDataString;
 };
+
 
   
 let TotalAmount = () => {
