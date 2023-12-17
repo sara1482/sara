@@ -1,3 +1,4 @@
+
 let shopItemsData = [
   {
     id: "mrezazagazista1",
@@ -518,8 +519,6 @@ generateCartItems();
     document.getElementById("cartDataInput").value = cartDataString;
 };
 
-
-
   
 let TotalAmount = () => {
   if (basket.length !== 0) {
@@ -543,7 +542,33 @@ let TotalAmount = () => {
               </form>
           </div>
       `;
+
+      updateCartDataForSubmission();
+      document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
   }
 };
 
 TotalAmount();
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
