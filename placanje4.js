@@ -519,28 +519,7 @@ generateCartItems();
     document.getElementById("cartDataInput").value = cartDataString;
 };
 
-  let updateCustomerDataForSubmission = () => {
-    // Collecting customer details
-    let customerDetails = {
-        Ime: document.getElementById("displayIme").innerText,
-        Prezime: document.getElementById("displayPrezime").innerText,
-        Email: document.getElementById("displayEmail").innerText,
-        Grad: document.getElementById("displayGrad").innerText,
-        Ulica: document.getElementById("displayUlica").innerText,
-        Broj: document.getElementById("displayBroj").innerText,
-        PostanskiBroj: document.getElementById("displayPostanskibroj").innerText
-    };
-
-    // Formatting the customer details into a string
-    let customerDataString = Object.entries(customerDetails)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join("\n");
-
-    // Setting the formatted string into a hidden input field
-    console.log("Customer Data:", customerDataString);
-    document.getElementById("customerDataInput").value = customerDataString;
-};
-
+  
 let TotalAmount = () => {
   if (basket.length !== 0) {
       let amount = basket
@@ -557,20 +536,19 @@ let TotalAmount = () => {
               <form action="https://formsubmit.co/saravatricc1@gmail.com" method="POST" id="contactForm">
                   <!-- ... other fields like customer information ... -->
                   <input type="hidden" name="CartData" id="cartDataInput">
-                  <input type="hidden" name="CustomerData" id="customerDataInput">
                   <div class="checkoutt">
                       <button type="submit" class="checkout">POTVRDITE KUPOVINU</button>
                   </div>
               </form>
           </div>
       `;
-      // Add event listener after button is created
-      let checkoutButton = document.querySelector(".checkout");
-   
+
+      updateCartDataForSubmission();
+      document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
   }
 };
 
-TotalAmount(); // Call the function to ensure it executes
+TotalAmount();
 
   
   
