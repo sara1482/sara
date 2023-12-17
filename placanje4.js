@@ -519,15 +519,28 @@ generateCartItems();
     document.getElementById("cartDataInput").value = cartDataString;
 };
 
-  
+  let updateCustomerDataForSubmission = () => {
+    // Collecting customer details
+    let customerDetails = {
+        Ime: document.getElementById("displayIme").innerText,
+        Prezime: document.getElementById("displayPrezime").innerText,
+        Email: document.getElementById("displayEmail").innerText,
+        Grad: document.getElementById("displayGrad").innerText,
+        Ulica: document.getElementById("displayUlica").innerText,
+        Broj: document.getElementById("displayBroj").innerText,
+        PostanskiBroj: document.getElementById("displayPostanskibroj").innerText
+    };
+
+    // Formatting the customer details into a string
+    let customerDataString = Object.entries(customerDetails)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join("\n");
+
+    // Setting the formatted string into a hidden input field
+    document.getElementById("customerDataInput").value = customerDataString;
+};
+
 let TotalAmount = () => {
-  document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
-  document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
-  document.getElementById("inputEmail").value = document.getElementById("displayEmail").innerText;
-  document.getElementById("inputGrad").value = document.getElementById("displayGrad").innerText;
-  document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
-  document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
-  document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
   if (basket.length !== 0) {
       let amount = basket
           .map((x) => {
@@ -550,7 +563,6 @@ let TotalAmount = () => {
           </div>
       `;
 
-      updateCartDataForSubmission();
       document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
   }
 };
