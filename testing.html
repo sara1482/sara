@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add CSS styles for responsiveness */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* Fix the table layout */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            word-wrap: break-word; /* Allow long words to break to fit the column width */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Add media query for smaller screens */
+        @media screen and (max-width: 600px) {
+            th, td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="ShoppingCart"></div>
+    <script>
+        // Your JavaScript code to generate the table should go here
+        let generateCartItems = () => {
+            if (basket.length !== 0) {
+                ShoppingCart.innerHTML = `
+                <div class="table-responsive">
+                    <table class="tableee">
+                        <tr>
+                            <th>Ime Proizvoda</th>
+                            <th>Cijena</th>
+                            <th>Kolicina</th>
+                            <th>Ukupna Cijena</th>
+                        </tr>
+                    </table>
+                </div>` + basket
+                .map((x) => {
+                    let { id, item } = x;
+                    let search = shopItemsData.find((y) => y.id === id) || [];
+                    return `
+                    <div class="table-responsive">
+                        <table class="tablee">
+                            <tr>
+                                <td>${search.name}</td>
+                                <td>${search.price} KM</td>
+                                <td>${item}</td>
+                                <td>${item * search.price} KM</td>
+                            </tr>
+                        </table>
+                    </div>`;
+                })
+                .join("");
+            }
+        }
+
+        // Replace 'basket' and 'shopItemsData' with your actual data
+        let basket = [
+            { id: 1, item: 2 },
+            { id: 2, item: 3 },
+            // Add more items as needed
+        ];
+
+        let shopItemsData = [
+            { id: 1, name: 'Progggggduct 1', price: 10 },
+            { id: 2, name: 'Product 2', price: 15 },
+            // Add more product data as needed
+        ];
+
+        // Call the function to generate the table
+        generateCartItems();
+    </script>
+</body>
+</html>

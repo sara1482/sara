@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Page 2</title>
+</head>
+<body>
+    <div class="container">
+        <h3 class="title">Informacije:</h3>
+        <div>
+            <p>Ime: <span id="displayIme"></span></p>
+            <p>Prezime: <span id="displayPrezime"></span></p>
+            <p>Email: <span id="displayEmail"></span></p>
+            <!-- Display other form fields as needed -->
+        </div>
+    </div>
+
+    <script>
+        // Retrieve the data from local storage and display it
+        const ime = localStorage.getItem("ime");
+        const prezime = localStorage.getItem("prezime");
+        const email = localStorage.getItem("email");
+
+        document.getElementById("displayIme").textContent = ime;
+        document.getElementById("displayPrezime").textContent = prezime;
+        document.getElementById("displayEmail").textContent = email;
+    </script>
+</body>
+</html>
