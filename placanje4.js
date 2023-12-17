@@ -566,12 +566,7 @@ let TotalAmount = () => {
       `;
       // Add event listener after button is created
       let checkoutButton = document.querySelector(".checkout");
-      if (checkoutButton) {
-          checkoutButton.addEventListener("click", (event) => {
-              updateCartDataForSubmission();
-              updateCustomerDataForSubmission();
-          });
-      }
+   
   }
 };
 
