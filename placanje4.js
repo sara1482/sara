@@ -521,6 +521,13 @@ generateCartItems();
 
   
 let TotalAmount = () => {
+  document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
+  document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
+  document.getElementById("inputEmail").value = document.getElementById("displayEmail").innerText;
+  document.getElementById("inputGrad").value = document.getElementById("displayGrad").innerText;
+  document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
+  document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
+  document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
   if (basket.length !== 0) {
       let amount = basket
           .map((x) => {
