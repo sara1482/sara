@@ -509,18 +509,18 @@ generateCartItems();
   };
   
   // On placanje4.html
+// On placanje4.html
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const data = {
+    const userInfo = {
         ime: urlParams.get('ime'),
         prezime: urlParams.get('prezime'),
         email: urlParams.get('email'),
         // ... other fields ...
     };
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
 };
 
-// On placanje4.html
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     for (const key in userInfo) {
@@ -530,8 +530,10 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         input.value = userInfo[key];
         this.appendChild(input);
     }
-    // No need to prevent default as we want to submit the form
+    // updateCartDataForSubmission is called here to ensure cart data is up-to-date
+    updateCartDataForSubmission();
 });
+
 
   
   let updateCartDataForSubmission = () => {
