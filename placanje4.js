@@ -564,8 +564,6 @@ let TotalAmount = () => {
               </form>
           </div>
       `;
- updateCartDataForSubmission();
-    updateCustomerDataForSubmission();
       // Add event listener after button is created
       let checkoutButton = document.querySelector(".checkout");
       if (checkoutButton) {
