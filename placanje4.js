@@ -508,7 +508,31 @@ generateCartItems();
   localStorage.setItem("data", JSON.stringify(basket));
   };
   
-  
+  // On placanje4.html
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const data = {
+        ime: urlParams.get('ime'),
+        prezime: urlParams.get('prezime'),
+        email: urlParams.get('email'),
+        // ... other fields ...
+    };
+    localStorage.setItem('userInfo', JSON.stringify(data));
+};
+
+// On placanje4.html
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    for (const key in userInfo) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = userInfo[key];
+        this.appendChild(input);
+    }
+    // No need to prevent default as we want to submit the form
+});
+
   
   let updateCartDataForSubmission = () => {
     let cartDataString = basket.map(x => {
