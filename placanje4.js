@@ -1,4 +1,3 @@
-
 let shopItemsData = [
   {
     id: "mrezazagazista1",
@@ -519,36 +518,6 @@ generateCartItems();
     document.getElementById("cartDataInput").value = cartDataString;
 };
 
-let updateCartDataForSubmission = () => {
-    let customerInfo = {
-        ime: document.getElementById('displayIme').innerText,
-        prezime: document.getElementById('displayPrezime').innerText,
-        email: document.getElementById('displayEmail').innerText,
-        grad: document.getElementById('displayGrad').innerText,
-        ulica: document.getElementById('displayUlica').innerText,
-        broj: document.getElementById('displayBroj').innerText,
-        postanskibroj: document.getElementById('displayPostanskibroj').innerText
-    };
-
-    let cartDataString = basket.map(x => {
-        let { id, item } = x;
-        let search = shopItemsData.find(y => y.id === id) || {};
-        return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
-    }).join("\n");
-
-    cartDataString += "\n\nCustomer Information:\n" +
-                      `Name: ${customerInfo.ime}\n` +
-                      `Surname: ${customerInfo.prezime}\n` +
-                      `Email: ${customerInfo.email}\n` +
-                      `City: ${customerInfo.grad}\n` +
-                      `Street: ${customerInfo.ulica}\n` +
-                      `Number: ${customerInfo.broj}\n` +
-                      `Postal Code: ${customerInfo.postanskibroj}`;
-
-    document.getElementById("cartDataInput").value = cartDataString;
-};
-
-
   
 let TotalAmount = () => {
   if (basket.length !== 0) {
@@ -564,84 +533,15 @@ let TotalAmount = () => {
           <div class="totalcijena">
               <h2 class="h2totalcijena">Ukupna Cijena: ${amount} KM</h2>
               <form action="https://formsubmit.co/saravatricc1@gmail.com" method="POST" id="contactForm">
+                  <!-- ... other fields like customer information ... -->
                   <input type="hidden" name="CartData" id="cartDataInput">
-                  <input type="hidden" name="CustomerName" id="customerName">
-                  <input type="hidden" name="CustomerSurname" id="customerSurname">
-                  <input type="hidden" name="CustomerEmail" id="customerEmail">
-                  <input type="hidden" name="CustomerCity" id="customerCity">
-                  <input type="hidden" name="CustomerStreet" id="customerStreet">
-                  <input type="hidden" name="CustomerNumber" id="customerNumber">
-                  <input type="hidden" name="CustomerPostalCode" id="customerPostalCode">
                   <div class="checkoutt">
                       <button type="submit" class="checkout">POTVRDITE KUPOVINU</button>
                   </div>
               </form>
           </div>
       `;
-
-      updateCartDataForSubmission();
-      document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
   }
 };
 
-let updateCartDataForSubmission = () => {
-    let customerInfo = {
-        ime: document.getElementById('displayIme').innerText,
-        prezime: document.getElementById('displayPrezime').innerText,
-        email: document.getElementById('displayEmail').innerText,
-        grad: document.getElementById('displayGrad').innerText,
-        ulica: document.getElementById('displayUlica').innerText,
-        broj: document.getElementById('displayBroj').innerText,
-        postanskibroj: document.getElementById('displayPostanskibroj').innerText
-    };
-
-    let cartDataString = basket.map(x => {
-        let { id, item } = x;
-        let search = shopItemsData.find(y => y.id === id) || {};
-        return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
-    }).join("\n");
-
-    cartDataString += "\n\nCustomer Information:\n" +
-                      `Name: ${customerInfo.ime}\n` +
-                      `Surname: ${customerInfo.prezime}\n` +
-                      `Email: ${customerInfo.email}\n` +
-                      `City: ${customerInfo.grad}\n` +
-                      `Street: ${customerInfo.ulica}\n` +
-                      `Number: ${customerInfo.broj}\n` +
-                      `Postal Code: ${customerInfo.postanskibroj}`;
-
-    // Update hidden fields with customer data
-    document.getElementById("customerName").value = customerInfo.ime;
-    document.getElementById("customerSurname").value = customerInfo.prezime;
-    document.getElementById("customerEmail").value = customerInfo.email;
-    document.getElementById("customerCity").value = customerInfo.grad;
-    document.getElementById("customerStreet").value = customerInfo.ulica;
-    document.getElementById("customerNumber").value = customerInfo.broj;
-    document.getElementById("customerPostalCode").value = customerInfo.postanskibroj;
-
-    document.getElementById("cartDataInput").value = cartDataString;
-};
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+TotalAmount();
