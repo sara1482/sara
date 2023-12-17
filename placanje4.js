@@ -537,6 +537,7 @@ generateCartItems();
         .join("\n");
 
     // Setting the formatted string into a hidden input field
+    console.log("Customer Data:", customerDataString);
     document.getElementById("customerDataInput").value = customerDataString;
 };
 
@@ -556,18 +557,27 @@ let TotalAmount = () => {
               <form action="https://formsubmit.co/saravatricc1@gmail.com" method="POST" id="contactForm">
                   <!-- ... other fields like customer information ... -->
                   <input type="hidden" name="CartData" id="cartDataInput">
+                  <input type="hidden" name="CustomerData" id="customerDataInput">
                   <div class="checkoutt">
                       <button type="submit" class="checkout">POTVRDITE KUPOVINU</button>
                   </div>
               </form>
           </div>
       `;
-
-      document.querySelector(".checkout").addEventListener("click", updateCustomerDataForSubmission);
+ updateCartDataForSubmission();
+    updateCustomerDataForSubmission();
+      // Add event listener after button is created
+      let checkoutButton = document.querySelector(".checkout");
+      if (checkoutButton) {
+          checkoutButton.addEventListener("click", (event) => {
+              updateCartDataForSubmission();
+              updateCustomerDataForSubmission();
+          });
+      }
   }
 };
 
-TotalAmount();
+TotalAmount(); // Call the function to ensure it executes
 
   
   
